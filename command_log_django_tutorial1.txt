@@ -1,0 +1,568 @@
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+----- ----- ----- ----- Tutorial 1 ----- ----- ----- ----- 
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+----- ----- ----- ----- ----- IDLE ----- ----- ----- ----- -----
+>>> import django
+>>> print django.get_version()
+1.4
+
+----- ----- ----- ----- CMD Prompt ----- ----- ----- -----
+C:\Users\Initia7_B>cd C:\Users\Initia7_B\Documents\HPU\CSCI 3771
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771>python django-admin.py startproject djangoSite
+python: can't open file 'django-admin.py': [Errno 2] No such file or directory
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771>python C:\Python26\site-packages\django\bin\django-admin.py startproject djangoSite
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771>cd djangoSite
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py runserver
+
+Validating models...
+
+0 errors found
+Django version 1.4, using settings 'djangoSite.settings'
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+^C
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line
+443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line
+382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196,
+ in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232,
+ in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371,
+ in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\syncdb.py"
+, line 57, in handle_noargs
+    cursor = connection.cursor()
+  File "C:\Python26\lib\site-packages\django\db\backends\dummy\base.py", line 15
+, in complain
+    raise ImproperlyConfigured("settings.DATABASES is improperly configured. "
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly co
+nfigured. Please supply the ENGINE value. Check settings documentation for more
+details.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_user_permissions
+Creating table auth_user_groups
+Creating table auth_user
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no): y
+Please enter either "yes" or "no": yes
+Username (leave blank to use 'initia7_b'):
+E-mail address: bryan@wolfford.com
+Password:
+Password (again):
+Superuser created successfully.
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+----- ----- ----- ----- ----- IDLE ----- ----- ----- ----- -----
+>>> import sqlite
+
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    import sqlite
+ImportError: No module named sqlite
+>>> import sqlite3
+>>> dir(sqlite3)
+['Binary', 'Cache', 'Connection', 'Cursor', 'DataError', 'DatabaseError', 'Date', 'DateFromTicks', 'Error', 'IntegrityError', 'InterfaceError', 'InternalError', 'NotSupportedError', 'OperationalError', 'OptimizedUnicode', 'PARSE_COLNAMES', 'PARSE_DECLTYPES', 'PrepareProtocol', 'ProgrammingError', 'Row', 'SQLITE_ALTER_TABLE', 'SQLITE_ANALYZE', 'SQLITE_ATTACH', 'SQLITE_CREATE_INDEX', 'SQLITE_CREATE_TABLE', 'SQLITE_CREATE_TEMP_INDEX', 'SQLITE_CREATE_TEMP_TABLE', 'SQLITE_CREATE_TEMP_TRIGGER', 'SQLITE_CREATE_TEMP_VIEW', 'SQLITE_CREATE_TRIGGER', 'SQLITE_CREATE_VIEW', 'SQLITE_DELETE', 'SQLITE_DENY', 'SQLITE_DETACH', 'SQLITE_DROP_INDEX', 'SQLITE_DROP_TABLE', 'SQLITE_DROP_TEMP_INDEX', 'SQLITE_DROP_TEMP_TABLE', 'SQLITE_DROP_TEMP_TRIGGER', 'SQLITE_DROP_TEMP_VIEW', 'SQLITE_DROP_TRIGGER', 'SQLITE_DROP_VIEW', 'SQLITE_IGNORE', 'SQLITE_INSERT', 'SQLITE_OK', 'SQLITE_PRAGMA', 'SQLITE_READ', 'SQLITE_REINDEX', 'SQLITE_SELECT', 'SQLITE_TRANSACTION', 'SQLITE_UPDATE', 'Statement', 'Time', 'TimeFromTicks', 'Timestamp', 'TimestampFromTicks', 'Warning', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '__path__', 'adapt', 'adapters', 'apilevel', 'complete_statement', 'connect', 'converters', 'datetime', 'dbapi2', 'enable_callback_tracebacks', 'enable_shared_cache', 'paramstyle', 'register_adapter', 'register_converter', 'sqlite_version', 'sqlite_version_info', 'threadsafety', 'time', 'version', 'version_info', 'x']
+>>> sqlite3.schema
+
+Traceback (most recent call last):
+  File "<pyshell#3>", line 1, in <module>
+    sqlite3.schema
+AttributeError: 'module' object has no attribute 'schema'
+>>> conn = sqlite3.connect('C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\djangoSite\mydb.db')
+>>> cur = con.cursor()
+
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    cur = con.cursor()
+NameError: name 'con' is not defined
+>>> cur = conn.cursor()
+>>> for line in cur.iterdump():
+	print line
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#9>", line 1, in <module>
+    for line in cur.iterdump():
+AttributeError: 'sqlite3.Cursor' object has no attribute 'iterdump'
+>>> for line in conn.iterdump():
+	print line
+
+	
+BEGIN TRANSACTION;
+CREATE TABLE "auth_permission" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(50) NOT NULL,
+    "content_type_id" integer NOT NULL,
+    "codename" varchar(100) NOT NULL,
+    UNIQUE ("content_type_id", "codename")
+);
+INSERT INTO "auth_permission" VALUES(1,'Can add group',2,'add_group');
+INSERT INTO "auth_permission" VALUES(2,'Can add permission',1,'add_permission');
+INSERT INTO "auth_permission" VALUES(3,'Can add user',3,'add_user');
+INSERT INTO "auth_permission" VALUES(4,'Can change group',2,'change_group');
+INSERT INTO "auth_permission" VALUES(5,'Can change permission',1,'change_permission');
+INSERT INTO "auth_permission" VALUES(6,'Can change user',3,'change_user');
+INSERT INTO "auth_permission" VALUES(7,'Can delete group',2,'delete_group');
+INSERT INTO "auth_permission" VALUES(8,'Can delete permission',1,'delete_permission');
+INSERT INTO "auth_permission" VALUES(9,'Can delete user',3,'delete_user');
+INSERT INTO "auth_permission" VALUES(10,'Can add content type',4,'add_contenttype');
+INSERT INTO "auth_permission" VALUES(11,'Can change content type',4,'change_contenttype');
+INSERT INTO "auth_permission" VALUES(12,'Can delete content type',4,'delete_contenttype');
+INSERT INTO "auth_permission" VALUES(13,'Can add session',5,'add_session');
+INSERT INTO "auth_permission" VALUES(14,'Can change session',5,'change_session');
+INSERT INTO "auth_permission" VALUES(15,'Can delete session',5,'delete_session');
+INSERT INTO "auth_permission" VALUES(16,'Can add site',6,'add_site');
+INSERT INTO "auth_permission" VALUES(17,'Can change site',6,'change_site');
+INSERT INTO "auth_permission" VALUES(18,'Can delete site',6,'delete_site');
+CREATE TABLE "auth_group_permissions" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "group_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id"),
+    UNIQUE ("group_id", "permission_id")
+);
+CREATE TABLE "auth_group" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(80) NOT NULL UNIQUE
+);
+CREATE TABLE "auth_user_user_permissions" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id"),
+    UNIQUE ("user_id", "permission_id")
+);
+CREATE TABLE "auth_user_groups" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "group_id" integer NOT NULL REFERENCES "auth_group" ("id"),
+    UNIQUE ("user_id", "group_id")
+);
+CREATE TABLE "auth_user" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "username" varchar(30) NOT NULL UNIQUE,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL,
+    "email" varchar(75) NOT NULL,
+    "password" varchar(128) NOT NULL,
+    "is_staff" bool NOT NULL,
+    "is_active" bool NOT NULL,
+    "is_superuser" bool NOT NULL,
+    "last_login" datetime NOT NULL,
+    "date_joined" datetime NOT NULL
+);
+INSERT INTO "auth_user" VALUES(1,'initia7_b','','','bryan@wolfford.com','pbkdf2_sha256$10000$xEPZ46NCneUI$dN/VxPHMxllN7u7kZL6R7q/jNYdTnkQtptp6/e2Yc5g=',1,1,1,'2012-04-24 03:51:59.319000','2012-04-24 03:51:59.319000');
+CREATE TABLE "django_content_type" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(100) NOT NULL,
+    "app_label" varchar(100) NOT NULL,
+    "model" varchar(100) NOT NULL,
+    UNIQUE ("app_label", "model")
+);
+INSERT INTO "django_content_type" VALUES(1,'permission','auth','permission');
+INSERT INTO "django_content_type" VALUES(2,'group','auth','group');
+INSERT INTO "django_content_type" VALUES(3,'user','auth','user');
+INSERT INTO "django_content_type" VALUES(4,'content type','contenttypes','contenttype');
+INSERT INTO "django_content_type" VALUES(5,'session','sessions','session');
+INSERT INTO "django_content_type" VALUES(6,'site','sites','site');
+CREATE TABLE "django_session" (
+    "session_key" varchar(40) NOT NULL PRIMARY KEY,
+    "session_data" text NOT NULL,
+    "expire_date" datetime NOT NULL
+);
+CREATE TABLE "django_site" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "domain" varchar(100) NOT NULL,
+    "name" varchar(50) NOT NULL
+);
+INSERT INTO "django_site" VALUES(1,'example.com','example.com');
+CREATE INDEX "auth_permission_1bb8f392" ON "auth_permission" ("content_type_id");
+CREATE INDEX "auth_group_permissions_425ae3c4" ON "auth_group_permissions" ("group_id");
+CREATE INDEX "auth_group_permissions_1e014c8f" ON "auth_group_permissions" ("permission_id");
+CREATE INDEX "auth_user_user_permissions_403f60f" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX "auth_user_user_permissions_1e014c8f" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX "auth_user_groups_403f60f" ON "auth_user_groups" ("user_id");
+CREATE INDEX "auth_user_groups_425ae3c4" ON "auth_user_groups" ("group_id");
+CREATE INDEX "django_session_3da3d3d8" ON "django_session" ("expire_date");
+COMMIT;
+>>> 
+
+----- ----- ----- ----- CMD Prompt ----- ----- ----- -----
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py startapp polls
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql polls
+BEGIN;
+CREATE TABLE "polls_poll" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "question" varchar(200) NOT NULL,
+    "pub_date" datetime NOT NULL
+)
+;
+CREATE TABLE "polls_choice" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "poll_id" integer NOT NULL REFERENCES "polls_poll" ("id"),
+    "choice" varchar(200) NOT NULL,
+    "votes" integer NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py validate
+0 errors found
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlcustom polls
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlclear polls
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlindexes polls
+BEGIN;
+CREATE INDEX "polls_choice_763e883" ON "polls_choice" ("poll_id");
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall polls
+BEGIN;
+CREATE TABLE "polls_poll" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "question" varchar(200) NOT NULL,
+    "pub_date" datetime NOT NULL
+)
+;
+CREATE TABLE "polls_choice" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "poll_id" integer NOT NULL REFERENCES "polls_poll" ("id"),
+    "choice" varchar(200) NOT NULL,
+    "votes" integer NOT NULL
+)
+;
+CREATE INDEX "polls_choice_763e883" ON "polls_choice" ("poll_id");
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table polls_poll
+Creating table polls_choice
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from polls.models import Poll, Choice
+>>> Poll.objects.all()
+[]
+>>> import datetime
+>>> p = Poll(question="What's up?", pub_date=datetime.datetime.now())
+>>> p.save()
+C:\Python26\lib\site-packages\django\db\models\fields\__init__.py:808: RuntimeWarning: DateTimeField received a naive da
+tetime (2012-04-23 19:15:12.701000) while time zone support is active.
+  RuntimeWarning)
+>>> p.id
+1
+>>> p.question
+"What's up?"
+>>> p.pub_date
+datetime.datetime(2012, 4, 23, 19, 15, 12, 701000)
+>>> p.pub_date = datetime.datetime(2007, 4, 1, 0, 0)
+>>> p.save()
+C:\Python26\lib\site-packages\django\db\models\fields\__init__.py:808: RuntimeWarning: DateTimeField received a naive da
+tetime (2007-04-01 00:00:00) while time zone support is active.
+  RuntimeWarning)
+>>> Poll.objects.all()
+[<Poll: Poll object>]
+>>> exit
+Use exit() or Ctrl-Z plus Return to exit
+>>> exit()
+****************I HATE THAT ABOUT PYTHON!**********************
+
+****************Next, I had a problem that had to do with the tabs
+after copy/pasteing the code fomr the tutorial website**************
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 14
+    return self.pub_date.date() == datetime.date.today()
+         ^
+IndentationError: expected an indented block
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 12
+    return self.pub_date.date() == datetime.date.today()
+         ^
+IndentationError: expected an indented block
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 12
+    return self.pub_date.date() == datetime.date.today()
+         ^
+IndentationError: expected an indented block
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 9
+    def __unicode__(self):
+    ^
+IndentationError: unexpected indent
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 9
+    def __unicode__(self):
+    ^
+IndentationError: unexpected indent
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 9
+    def __unicode__(self):
+    ^
+IndentationError: unexpected indent
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 196, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 232, in execute
+    output = self.handle(*args, **options)
+  File "C:\Python26\lib\site-packages\django\core\management\base.py", line 371, in handle
+    return self.handle_noargs(**options)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\shell.py", line 46, in handle_noargs
+    get_models()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 181, in get_models
+    self._populate()
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 64, in _populate
+    self.load_app(app_name, True)
+  File "C:\Python26\lib\site-packages\django\db\models\loading.py", line 88, in load_app
+    models = import_module('.models', app_name)
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite\polls\models.py", line 9
+    def __unicode__(self):
+                         ^
+IndentationError: unindent does not match any outer indentation level
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from polls.models import Poll, Choice
+>>> Poll.object.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Poll' has no attribute 'object'
+>>> Poll.objects.all()
+[<Poll: What's up?>]
+>>> Poll.objects.filter(id=1)
+[<Poll: What's up?>]
+>>> Poll.objects.filter(question__startswith='What')
+[<Poll: What's up?>]
+>>> Poll.objects.get(pub_date__year=2007)
+<Poll: What's up?>
+>>> Poll.object.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Poll' has no attribute 'object'
+>>> Poll.objects.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Poll matching query does not exist.
+>>> Poll.objects.get(pk=1)
+<Poll: What's up?>
+>>> p = Poll.objects.get(pk=1)
+>>> p.was_published_today()
+False
+>>> p=Poll.objects.get(pk=1)
+>>> p.choice_set.all
+<bound method RelatedManager.all of <django.db.models.fields.related.RelatedManager object at 0x0235D550>>
+>>> p.choice_set.all()
+[]
+>>> p.choice_set.create(choice='Not much', votes=0)
+<Choice: Not much>
+>>> p.choice_set.create(choice='The sky', votes=0)
+<Choice: The sky>
+>>> c = p.choice_set.create(choice='Just hacking again', votes=0)
+>>> c.poll
+<Poll: What's up?>
+>>> p.choice_set.all()
+[<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]
+>>> p.choice_set.count()
+3
+>>> Choice.objects.filter(poll__pub_date__year=2007)
+[<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]
+>>> c = p.choice_set.filter(choice__startswith='Just hacking')
+>>> c.delete()
+>>> exit
+Use exit() or Ctrl-Z plus Return to exit
+>>> exit()
+****************I HATE THAT ABOUT PYTHON!**********************
