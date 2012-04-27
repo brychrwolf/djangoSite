@@ -1,0 +1,820 @@
+Models Command Log
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+----- ----- ----- ----- Models ----- ----- ----- ----- 
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+----- ----- ----- ----- ----- IDLE ----- ----- ----- ----- -----
+>>> from django.db import models
+
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    from django.db import models
+  File "C:\Python26\lib\site-packages\django\db\__init__.py", line 11, in <module>
+    if DEFAULT_DB_ALIAS not in settings.DATABASES:
+  File "C:\Python26\lib\site-packages\django\utils\functional.py", line 184, in inner
+    self._setup()
+  File "C:\Python26\lib\site-packages\django\conf\__init__.py", line 40, in _setup
+    raise ImportError("Settings cannot be imported, because environment variable %s is undefined." % ENVIRONMENT_VARIABLE)
+ImportError: Settings cannot be imported, because environment variable DJANGO_SETTINGS_MODULE is undefined.
+
+----- ----- ----- ----- CMD PROMPT ----- ----- ----- -----
+C:\Users\Initia7_B>cd C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.db import models
+>>>
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Initia7_B>cd C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+KeyboardInterrupt
+>>> from django.db import models
+>>> class Person(models.Model):
+...     first_name = models.CharField(max_length=30)
+...     last_name = models.CharField(max_length=30)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 54, in __new__
+    kwargs = {"app_label": model_module.__name__.split('.')[-2]}
+IndexError: list index out of range
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.db import models
+>>> class Person(models.Model):
+...     first_name = models.CharField(max_length=30)
+...     last_name = models.CharField(max_length=30)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 54, in __new__
+    kwargs = {"app_label": model_module.__name__.split('.')[-2]}
+IndexError: list index out of range
+>>> class Poll(models.Model):
+... ...     question = models.CharField(max_length=200)
+  File "<console>", line 2
+    ...     question = models.CharField(max_length=200)
+    ^
+IndentationError: expected an indented block
+>>> ...     pub_date = models.DateTimeField('date published')
+  File "<console>", line 1
+    ...     pub_date = models.DateTimeField('date published')
+    ^
+SyntaxError: invalid syntax
+>>> ...     class Meta:
+  File "<console>", line 1
+    ...     class Meta:
+    ^
+SyntaxError: invalid syntax
+>>> class Poll(models.Model):
+...     first_name = models.CharField(max_length=30)
+...     last_name = models.CharField(max_length=30)
+...     class Meta:
+...             app_label = 'test'
+...
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py startapp models_documentation
+
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql models_documentation
+Error: App with label models_documentation could not be found. Are you sure your INSTALLED_APPS sett
+ing is correct?
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql models_documentation
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall models_documentation
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall models_documentation
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql models_documentation
+BEGIN;
+CREATE TABLE "models_documentation_person" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table models_documentation_person
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql myapp
+Error: No module named models_documentation
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py startapp myapp
+Error: 'myapp' conflicts with the name of an existing Python module and cannot be used as an app nam
+e. Please try another name.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Error: No module named models_documentation
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table myapp_person
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py startapp myapp
+Error: 'myapp' conflicts with the name of an existing Python module and cannot be used as an app nam
+e. Please try another name.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall
+Error: Enter at least one appname.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall models_documentation
+Error: App with label models_documentation could not be found. Are you sure your INSTALLED_APPS sett
+ing is correct?
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>django-admin.py dumpdata
+Traceback (most recent call last):
+  File "C:\Python26\site-packages\django\bin\django-admin.py", line 5, in <module>
+    management.execute_from_command_line()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from
+_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 261, in fetch_comman
+d
+    klass = load_command_class(app_name, subcommand)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 69, in load_command_
+class
+    module = import_module('%s.management.commands.%s' % (app_name, name))
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\dumpdata.py", line 3, in <modu
+le>
+    from django.core import serializers
+  File "C:\Python26\lib\site-packages\django\core\serializers\__init__.py", line 21, in <module>
+    from django.core.serializers.base import SerializerDoesNotExist
+  File "C:\Python26\lib\site-packages\django\core\serializers\base.py", line 7, in <module>
+    from django.db import models
+  File "C:\Python26\lib\site-packages\django\db\__init__.py", line 11, in <module>
+    if DEFAULT_DB_ALIAS not in settings.DATABASES:
+  File "C:\Python26\lib\site-packages\django\utils\functional.py", line 184, in inner
+    self._setup()
+  File "C:\Python26\lib\site-packages\django\conf\__init__.py", line 40, in _setup
+    raise ImportError("Settings cannot be imported, because environment variable %s is undefined." %
+ ENVIRONMENT_VARIABLE)
+ImportError: Settings cannot be imported, because environment variable DJANGO_SETTINGS_MODULE is und
+efined.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>django-admin.py dumpdata models_documentation
+Traceback (most recent call last):
+  File "C:\Python26\site-packages\django\bin\django-admin.py", line 5, in <module>
+    management.execute_from_command_line()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from
+_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 261, in fetch_comman
+d
+    klass = load_command_class(app_name, subcommand)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 69, in load_command_
+class
+    module = import_module('%s.management.commands.%s' % (app_name, name))
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\dumpdata.py", line 3, in <modu
+le>
+    from django.core import serializers
+  File "C:\Python26\lib\site-packages\django\core\serializers\__init__.py", line 21, in <module>
+    from django.core.serializers.base import SerializerDoesNotExist
+  File "C:\Python26\lib\site-packages\django\core\serializers\base.py", line 7, in <module>
+    from django.db import models
+  File "C:\Python26\lib\site-packages\django\db\__init__.py", line 11, in <module>
+    if DEFAULT_DB_ALIAS not in settings.DATABASES:
+  File "C:\Python26\lib\site-packages\django\utils\functional.py", line 184, in inner
+    self._setup()
+  File "C:\Python26\lib\site-packages\django\conf\__init__.py", line 40, in _setup
+    raise ImportError("Settings cannot be imported, because environment variable %s is undefined." %
+ ENVIRONMENT_VARIABLE)
+ImportError: Settings cannot be imported, because environment variable DJANGO_SETTINGS_MODULE is und
+efined.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>django-admin.py dumpdata myapp
+Traceback (most recent call last):
+  File "C:\Python26\site-packages\django\bin\django-admin.py", line 5, in <module>
+    management.execute_from_command_line()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 443, in execute_from
+_command_line
+    utility.execute()
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 382, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 261, in fetch_comman
+d
+    klass = load_command_class(app_name, subcommand)
+  File "C:\Python26\lib\site-packages\django\core\management\__init__.py", line 69, in load_command_
+class
+    module = import_module('%s.management.commands.%s' % (app_name, name))
+  File "C:\Python26\lib\site-packages\django\utils\importlib.py", line 35, in import_module
+    __import__(name)
+  File "C:\Python26\lib\site-packages\django\core\management\commands\dumpdata.py", line 3, in <modu
+le>
+    from django.core import serializers
+  File "C:\Python26\lib\site-packages\django\core\serializers\__init__.py", line 21, in <module>
+    from django.core.serializers.base import SerializerDoesNotExist
+  File "C:\Python26\lib\site-packages\django\core\serializers\base.py", line 7, in <module>
+    from django.db import models
+  File "C:\Python26\lib\site-packages\django\db\__init__.py", line 11, in <module>
+    if DEFAULT_DB_ALIAS not in settings.DATABASES:
+  File "C:\Python26\lib\site-packages\django\utils\functional.py", line 184, in inner
+    self._setup()
+  File "C:\Python26\lib\site-packages\django\conf\__init__.py", line 40, in _setup
+    raise ImportError("Settings cannot be imported, because environment variable %s is undefined." %
+ ENVIRONMENT_VARIABLE)
+ImportError: Settings cannot be imported, because environment variable DJANGO_SETTINGS_MODULE is und
+efined.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> p = Person(models.Model)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Person' is not defined
+>>> p = Person(name="Fred Flintstone", gender="M")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Person' is not defined
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table myapp_musician
+Creating table myapp_album
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> p = Person(name="Fred Flintstone", gender="M")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Person' is not defined
+>>> dir
+<built-in function dir>
+>>> dir()
+['__builtins__']
+>>> from myapp/models
+  File "<console>", line 1
+    from myapp/models
+              ^
+SyntaxError: invalid syntax
+>>> from myapp\models
+  File "<console>", line 1
+    from myapp\models
+                    ^
+SyntaxError: unexpected character after line continuation character
+>>> from myapp.models
+  File "<console>", line 1
+    from myapp.models
+                    ^
+SyntaxError: invalid syntax
+>>> from myapp.models.py
+  File "<console>", line 1
+    from myapp.models.py
+                       ^
+SyntaxError: invalid syntax
+>>> from myapp.models import *
+>>> p = Person(name="Fred Flintstone", gender="M")
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 1576, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python26\lib\site-packages\django\db\models\sql\compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+DatabaseError: table myapp_person has no column named name
+>>> dir(Person)
+['DoesNotExist', 'GENDER_CHOICES', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__'
+, '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '_
+_module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof
+__', '__str__', '__subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred',
+ '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_
+val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val'
+, 'clean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'get_gender_display', 'obje
+cts', 'pk', 'prepare_database_save', 'save', 'save_base', 'serializable_value', 'unique_error_messag
+e', 'validate_unique']
+>>> p
+<Person: Person object>
+>>> dir(p)
+['DoesNotExist', 'GENDER_CHOICES', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__'
+, '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '_
+_module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof
+__', '__str__', '__subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred',
+ '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_
+val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val'
+, '_state', 'clean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'gender', 'get_ge
+nder_display', 'id', 'name', 'objects', 'pk', 'prepare_database_save', 'save', 'save_base', 'seriali
+zable_value', 'unique_error_message', 'validate_unique']
+>>> p.gender
+'M'
+>>> p.get_gender_display()
+u'Male'
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 1576, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python26\lib\site-packages\django\db\models\sql\compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+DatabaseError: table myapp_person has no column named name
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'p' is not defined
+>>> from myapp.models import *
+>>> p = Person(name="Fred Flintstone", gender="M")
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 1576, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python26\lib\site-packages\django\db\models\sql\compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+DatabaseError: table myapp_person has no column named name
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> import myapp.models
+>>> p = Person(name="Fred Flintstone", gender="M")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Person' is not defined
+>>> dir(Person)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Person' is not defined
+>>> dir()
+['__builtins__', 'myapp']
+>>> p = myapp.Person(name="Fred Flintstone", gender="M")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'Person'
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from myapp.models import *
+>>> p = myapp.Person(name="Fred Flintstone", gender="M")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'myapp' is not defined
+>>> p = Person(name="Fred Flintstone", gender="M")
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 1576, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python26\lib\site-packages\django\db\models\sql\compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+DatabaseError: table myapp_person has no column named name
+>>> dir()
+['Album', 'Musician', 'Person', '__builtins__', 'models', 'p']
+>>> dir(Person)
+['DoesNotExist', 'GENDER_CHOICES', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__'
+, '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '_
+_module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof
+__', '__str__', '__subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred',
+ '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_
+val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val'
+, 'clean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'get_gender_display', 'obje
+cts', 'pk', 'prepare_database_save', 'save', 'save_base', 'serializable_value', 'unique_error_messag
+e', 'validate_unique']
+>>> dir(Musician)
+['DoesNotExist', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__', '__doc__', '__eq
+__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '__module__', '__ne_
+_', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '_
+_subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred', '_get_FIELD_displ
+ay', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_val', '_get_unique
+_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val', 'album_set', 'cl
+ean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'objects', 'pk', 'prepare_databa
+se_save', 'save', 'save_base', 'serializable_value', 'unique_error_message', 'validate_unique']
+>>> Person.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: unbound method save() must be called with Person instance as first argument (got nothing
+instead)
+>>> p.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "C:\Python26\lib\site-packages\django\db\models\base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "C:\Python26\lib\site-packages\django\db\models\manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "C:\Python26\lib\site-packages\django\db\models\query.py", line 1576, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python26\lib\site-packages\django\db\models\sql\compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python26\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+DatabaseError: table myapp_person has no column named name
+>>> dir(Person)
+['DoesNotExist', 'GENDER_CHOICES', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__'
+, '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '_
+_module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof
+__', '__str__', '__subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred',
+ '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_
+val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val'
+, 'clean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'get_gender_display', 'obje
+cts', 'pk', 'prepare_database_save', 'save', 'save_base', 'serializable_value', 'unique_error_messag
+e', 'validate_unique']
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Initia7_B>cd C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_user_permissions
+Creating table auth_user_groups
+Creating table auth_user
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+Creating table polls_poll
+Creating table polls_choice
+Creating table myapp_person
+Creating table myapp_musician
+Creating table myapp_album
+Creating table django_admin_log
+
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no): yes
+Username (leave blank to use 'initia7_b'):
+E-mail address: bryan@wolfford.com
+Password:
+Password (again):
+Superuser created successfully.
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>from myapp.models import *
+'from' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from myapp.models import all
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ImportError: cannot import name all
+>>> from myapp.models import *
+>>> dir(Person)
+['DoesNotExist', 'GENDER_CHOICES', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__'
+, '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '_
+_module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof
+__', '__str__', '__subclasshook__', '__weakref__', '_base_manager', '_default_manager', '_deferred',
+ '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_
+val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_set_pk_val'
+, 'clean', 'clean_fields', 'date_error_message', 'delete', 'full_clean', 'get_gender_display', 'obje
+cts', 'pk', 'prepare_database_save', 'save', 'save_base', 'serializable_value', 'unique_error_messag
+e', 'validate_unique']
+>>> django-admin.py
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'django' is not defined
+>>> exit()
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>pythonmanage.py help
+'pythonmanage.py' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py help
+Usage: manage.py subcommand [options] [args]
+
+Options:
+  -v VERBOSITY, --verbosity=VERBOSITY
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings=SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath=PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Print traceback on exception
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+
+Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+Available subcommands:
+
+[auth]
+    changepassword
+    createsuperuser
+
+[django]
+    cleanup
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    reset
+    runfcgi
+    shell
+    sql
+    sqlall
+    sqlclear
+    sqlcustom
+    sqlflush
+    sqlindexes
+    sqlinitialdata
+    sqlreset
+    sqlsequencereset
+    startapp
+    startproject
+    syncdb
+    test
+    testserver
+    validate
+
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py version
+1.4
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py cleanup
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py dbshell
+'sqlite3' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Initia7_B>cd C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sqlall
+Error: Enter at least one appname.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql
+Error: Enter at least one appname.
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql myapp
+Error: App with label myapp could not be found. Are you sure your INSTALLED_APPS setting is correct?
+
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py dumpdata myapp
+Error: Unknown application: myapp
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py dumpdata polls
+[]
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql polls
+BEGIN;
+CREATE TABLE "polls_poll" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "question" varchar(200) NOT NULL,
+    "pub_date" datetime NOT NULL
+)
+;
+CREATE TABLE "polls_choice" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "poll_id" integer NOT NULL REFERENCES "polls_poll" ("id"),
+    "choice" varchar(200) NOT NULL,
+    "votes" integer NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql myapp
+BEGIN;
+CREATE TABLE "myapp_person" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(60) NOT NULL,
+    "gender" varchar(2) NOT NULL
+)
+;
+CREATE TABLE "myapp_musician" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "first_name" varchar(50) NOT NULL,
+    "last_name" varchar(50) NOT NULL,
+    "instrument" varchar(100) NOT NULL
+)
+;
+CREATE TABLE "myapp_album" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "artist_id" integer NOT NULL REFERENCES "myapp_musician" ("id"),
+    "name" varchar(100) NOT NULL,
+    "release_date" date NOT NULL,
+    "num_stars" integer NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql myapp
+BEGIN;
+CREATE TABLE "myapp_person" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(60) NOT NULL,
+    "gender" varchar(2) NOT NULL
+)
+;
+CREATE TABLE "myapp_musician" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "first_name" varchar(50) NOT NULL,
+    "last_name" varchar(50) NOT NULL,
+    "instrument" varchar(100) NOT NULL
+)
+;
+CREATE TABLE "myapp_album" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "artist_id" integer NOT NULL REFERENCES "myapp_musician" ("id"),
+    "name" varchar(100) NOT NULL,
+    "release_date" date NOT NULL,
+    "num_stars" integer NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py syncdb
+Creating tables ...
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py sql myapp
+BEGIN;
+CREATE TABLE "myapp_person" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(60) NOT NULL,
+    "gender" varchar(2) NOT NULL
+)
+;
+CREATE TABLE "myapp_musician" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "first_name" varchar(50) NOT NULL,
+    "last_name" varchar(50) NOT NULL,
+    "instrument" varchar(100) NOT NULL
+)
+;
+CREATE TABLE "myapp_album" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "artist_id" integer NOT NULL REFERENCES "myapp_musician" ("id"),
+    "name" varchar(100) NOT NULL,
+    "release_date" date NOT NULL,
+    "num_stars" integer NOT NULL
+)
+;
+COMMIT;
+
+C:\Users\Initia7_B\Documents\HPU\CSCI 3771\djangoSite>python manage.py shell
+Python 2.6.6 (r266:84297, Aug 24 2010, 18:46:32) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from myapp.models import Person
+>>> Person.objects.all()
+[]
+>>> p = Person(name="Bryan", gender="M")
+>>> p
+<Person: Person object>
+>>> p.name
+'Bryan'
+>>> p.gender
+'M'
+>>> p.gender_display()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Person' object has no attribute 'gender_display'
+>>> p.get_gender_display()
+u'Male'
+>>> p.save()
+>>>
