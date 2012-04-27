@@ -1,0 +1,46 @@
+Step 1: Sign up
+	Email confirmation -> done
+Step 2: Install Heroku Toolbelt
+	Full Install -> done
+Step 3: Login 
+	C:\>heroku login
+	Enter your Heroku credentials.
+	Email: bryan@wolfford.com
+	Password (typing will be hidden):
+	Found existing public key: ****
+	Uploading SSH public key ****
+	Authentication successful.
+Step  4: Deploy an Application
+	Prerequisites: 
+		Get started with Python on Heroku
+			Must have Python v2.7 installed
+				FFFFFUUUUUUUUUUUUUUUUU
+				Install Python v2.7
+					Download Python2.7
+					Run installer to C:\Python27\
+					Change PATH Environmental Variables
+						C:\Python26 to C:\Python27
+						C:\Python26\site-packages\django\bin to C:\Python27\site-packages\django\bin
+				Copy django folder from C:\Python26\site-packages to C:\Python27\site-packages
+				Test django in new directory
+					C:\djangoSite>python manage.py syncdb
+					Traceback (most recent call last):
+					  File "manage.py", line 8, in <module>
+					    from django.core.management import execute_from_command_line
+					ImportError: No module named django.core.management
+				-_-
+Research how to install a site-package
+discover in <a href=http://docs.python.org/install/index.html#how-installation-works target=_blank class=liveBlog>the python documentation</a> that the default directory in Python is Lib/site-packages unlike the Unix default of ~/site-packages
+				Again, change the PATH. This time only from C:\Python27\site-packages\django\bin to C:\Python27\Lib\site-packages\django\bin
+				Test django in new directory again
+					C:\djangoSite>python manage.py syncdb
+					Creating tables ...
+					Installing custom SQL ...
+					Installing indexes ...
+					Installed 0 object(s) from 0 fixture(s)
+				Celebrate;
+Pause for breath;
+
+Must use have Virtualenv installed
+Must have Pip installed
+Must use Pip to manage dependencies
